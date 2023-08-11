@@ -1,0 +1,94 @@
+.container {
+    display: grid;
+    place-items: center;
+    min-height: 80vh;
+}
+
+.gallery {
+    display: flex;
+    width: calc(80% - 2rem);
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.slide {
+    padding: 0;
+}
+
+.img {
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: all 0.2s ease;
+}
+
+.gallery:is(:hover, :focus-within) .img {
+    opacity: calc(0.1 + (var(--active-lerp, 0) * 0.9));
+    filter: grayscale(calc(1 - var(--active-lerp, 0)));
+}
+
+.link {
+    outline-offset: 4px;
+}
+
+.slide {
+    flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+    transition: flex 0.2s ease;
+
+    --lerp-0: 1;
+    --lerp-1: 0.5787037;
+    --lerp-2: 0.2962963;
+    --lerp-3: 0.125;
+    --lerp-4: 0.037037;
+    --lerp-5: 0.0046296;
+    --lerp-6: 0;
+}
+
+.slide:is(:hover, :focus-within) {
+    --active-lerp: var(--lerp-0);
+    z-index: 7;
+}
+.slide:has(+ .slide:is(:hover, :focus-within)),
+.slide:is(:hover, :focus-within) + .slide {
+    --active-lerp: var(--lerp-1);
+    z-index: 6;
+}
+.slide:has(+ .slide + .slide:is(:hover, :focus-within)),
+.slide:is(:hover, :focus-within) + .slide + .slide {
+    --active-lerp: var(--lerp-2);
+    z-index: 5;
+}
+.slide:has(+ .slide + .slide + .slide:is(:hover, :focus-within)),
+.slide:is(:hover, :focus-within) + .slide + .slide + .slide {
+    --active-lerp: var(--lerp-3);
+    z-index: 4;
+}
+.slide:has(+ .slide + .slide + .slide + .slide:is(:hover, :focus-within)),
+.slide:is(:hover, :focus-within) + .slide + .slide + .slide + .slide {
+    --active-lerp: var(--lerp-4);
+    z-index: 3;
+}
+.slide:has(+ .slide + .slide + .slide + .slide + .slide:is(:hover, :focus-within)),
+.slide:is(:hover, :focus-within) + .slide + .slide + .slide + .slide + .slide {
+    --active-lerp: var(--lerp-5);
+    z-index: 2;
+}
+.slide:has(
+        + .slide
+            + .slide
+            + .slide
+            + .slide
+            + .slide
+            + .slide:is(:hover, :focus-within)
+    ),
+.slide:is(:hover, :focus-within)
+    + .slide
+    + .slide
+    + .slide
+    + .slide
+    + .slide
+    + .slide {
+    --active-lerp: var(--lerp-6);
+    z-index: 1;
+}
