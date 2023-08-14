@@ -27,7 +27,7 @@ export default function Home() {
                 <p>
                     A fork of{' '}
                     <a href="https://codepen.io/jh3y/pen/xxjxqOL">
-                        Jhey's work
+                        Jhey&apos;s work
                     </a>
                     , images are from unsplash.
                 </p>
